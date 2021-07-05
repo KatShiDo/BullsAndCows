@@ -1,0 +1,15 @@
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\bin\Debug\BullsAndCowsWPF.exe.config
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\bin\Debug\BullsAndCowsWPF.exe
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\bin\Debug\BullsAndCowsWPF.pdb
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.csprojAssemblyReference.cache
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\MainWindow.g.cs
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\App.g.cs
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF_MarkupCompile.cache
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF_MarkupCompile.lref
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\MainWindow.baml
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.g.resources
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.Properties.Resources.resources
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.csproj.GenerateResource.cache
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.csproj.CoreCompileInputs.cache
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.exe
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.pdb
