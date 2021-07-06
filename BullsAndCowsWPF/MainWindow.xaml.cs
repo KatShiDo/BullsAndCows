@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using BullsAndCowsWPF.Annotations;
 
 namespace BullsAndCowsWPF
@@ -18,96 +18,57 @@ namespace BullsAndCowsWPF
         {
             InitializeComponent();
             model = new BullsCowsModel();
+            model.WinComplete += Model_WinComplete;
             DataContext = model;
-        }
-    }
-
-    public class BullsCowsModel : INotifyPropertyChanged
-    {
-        private string enigma;
-        
-        private string currentVersion;
-        
-        public int Step { get; private set; }
-
-        public ObservableCollection<Hypo> Hypothesis { get; } = new ObservableCollection<Hypo>();
-
-        public BullsCowsModel()
-        {
-            Init();
+            icKeys.ItemsSource = "1234567890";
         }
 
-        public void Init()
+        private void Model_WinComplete(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            char[] digits = "0123456789".ToCharArray();
-            for (int i = 0; i < 4; i++)
+            var wnd = new WindowComplete();
+            /*wnd.Width = 300;
+            wnd.Height = 200;
+            var sp = new StackPanel();
+            sp.Children.Add(new TextBlock
             {
-                int j = rnd.Next(i, 10);
-                (digits[i], digits[j]) = (digits[j], digits[i]);
+                Text = "You Win!!!"
+            });
+            var btn = new Button {Content = " New Game! "};
+            btn.Click += (ss, se) => wnd.Close();
+            sp.Children.Add(btn);
+            wnd.Content = sp;*/
+            wnd.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var chb = sender as Button;
+            var dig = chb.Content.ToString()[0];
+            model.PressKey(dig);
+        }
+
+        private void ButtonSend_Click(object sender, RoutedEventArgs e)
+        {
+            model.Send();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var cell = (sender as FrameworkElement).DataContext as Cell;
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                model.SwapWith(cell);
             }
-
-            enigma = new string(digits, 0, 4);
-        }
-
-        public string CurrentVersion
-        {
-            get => currentVersion;
-            set
+            else
             {
-                if (value != currentVersion)
-                {
-                    currentVersion = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(currentVersion)));
-
-                    if (currentVersion.Length == 4 && currentVersion.Distinct().Count() == 4 &&
-                        currentVersion.All(ch => char.IsDigit(ch)))
-                    {
-                        int bulls = 0, cows = 0;
-
-                        for (int i = 0; i < 4; i++)
-                        {
-                            if (currentVersion[i] == enigma[i])
-                            {
-                                bulls++;
-                            }
-                            else if (enigma.Contains(currentVersion[i]))
-                            {
-                                cows++;
-                            }
-                        }
-
-                        Step++;
-
-                        Hypothesis.Add(new Hypo
-                        {
-                            Step = Step,
-                            Num = currentVersion,
-                            Bulls = bulls,
-                            Cows = cows
-                        });
-
-                        while (Hypothesis.Count > 8)
-                        {
-                            Hypothesis.RemoveAt(0);
-                        }
-                    }
-                }
+                model.SelectTo(cell);
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        
-    }
-
-    public class Hypo
-    {
-        public string Num { get; set; }
-        public int Bulls { get; set; }
-        public int Cows { get; set; }
-        public int Step { get; internal set; }
-
-        public override string ToString() => Num;
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var h = (sender as FrameworkElement).DataContext.ToString();
+            model.SetHypo(h);
+        }
     }
 }

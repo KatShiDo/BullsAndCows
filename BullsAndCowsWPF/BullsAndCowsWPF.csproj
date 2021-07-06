@@ -50,6 +50,11 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="MySuperBox.cs" />
+        <Compile Include="ViewModelBase.cs" />
+        <Compile Include="WindowComplete.xaml.cs">
+          <DependentUpon>WindowComplete.xaml</DependentUpon>
+        </Compile>
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -58,10 +63,13 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Include="BullsCowsModel.cs" />
+        <Compile Include="Hypo.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Page Include="WindowComplete.xaml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\Annotations.cs" />

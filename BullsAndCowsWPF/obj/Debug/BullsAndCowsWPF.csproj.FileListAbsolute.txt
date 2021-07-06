@@ -13,3 +13,5 @@ D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.csproj
 D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.csproj.CoreCompileInputs.cache
 D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.exe
 D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\BullsAndCowsWPF.pdb
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\WindowComplete.g.cs
+D:\Projects\github\BullsAndCows\BullsAndCowsWPF\obj\Debug\WindowComplete.baml

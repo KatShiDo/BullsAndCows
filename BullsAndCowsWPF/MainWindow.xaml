@@ -6,30 +6,77 @@
         xmlns:local="clr-namespace:BullsAndCowsWPF"
         mc:Ignorable="d"
         FontSize="40"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Bulls And Cows" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <ItemsControl ItemsSource="{Binding Hypothesis}" HorizontalAlignment="Center"
                       VerticalAlignment="Bottom">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown">
                         <TextBlock Text="{Binding Step}" Width="60" HorizontalAlignment="Right"></TextBlock>
-                        <TextBlock Text=": "></TextBlock>
+                        <TextBlock Text=": " Foreground="Silver"></TextBlock>
                         <TextBlock Text="{Binding Num}" Width="140"></TextBlock>
-                        <TextBlock Text="Bulls: "></TextBlock>
+                        <TextBlock Text="Bulls: " Foreground="Silver"></TextBlock>
                         <TextBlock Text="{Binding Bulls}" Width="40"></TextBlock>
-                        <TextBlock Text="Cows: "></TextBlock>
+                        <TextBlock Text="Cows: " Foreground="Silver"></TextBlock>
                         <TextBlock Text="{Binding Cows}" Width="40"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <TextBox Grid.Row="1" Text="{Binding Mode=TwoWay, Path=CurrentVersion, UpdateSourceTrigger=PropertyChanged}"
+        <!--<TextBox Grid.Row="1" Text="{Binding Mode=TwoWay, Path=CurrentVersion, UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Width="150"
-                 TextAlignment="Center"></TextBox>
+                 TextAlignment="Center"></TextBox>-->
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Width="420">
+            <Grid>
+                <ItemsControl x:Name="icVers" ItemsSource="{Binding Vers.Items}"
+                              VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="60" Height="60" Margin="5, 10" BorderThickness="2" BorderBrush="Silver"
+                                    Background="#EEE" MouseDown="Border_MouseDown">
+                                <TextBlock Text="{Binding Value}" HorizontalAlignment="Center"></TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+                <Border VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Rectangle Stroke="Red" Width="70" Height="70" StrokeThickness="2">
+                        <Rectangle.RenderTransform>
+                            <TranslateTransform X="{Binding Vers.ShiftX}" Y="5"></TranslateTransform>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Border>
+            </Grid>
+            
+            <Button Content=" Send " Click="ButtonSend_Click" Visibility="{Binding VsbBtnSend}"
+                    FontSize="30" Height="60" Width="120" Margin="5, 10"></Button>
+        </StackPanel>
+        
+        <ItemsControl x:Name="icKeys" Grid.Row="2" HorizontalAlignment="Center">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}" Click="Button_Click" Width="60" Height="60"
+                            Margin="5, 10"></Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>
